@@ -246,7 +246,9 @@ vk1Csc079 & c::
 
 ;変換+s→systemのプロパティ
 vk1Csc079 & s::
-	Send #{Pause}
+	if GetKeyState("ctrl", "P"){
+		Send #{Pause}
+	}
 	return
 
 ;変換+space=>スクリプトリロード
