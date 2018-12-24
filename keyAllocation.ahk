@@ -16,22 +16,22 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ;無変換+(h or s) => 左
 vk1Dsc07B & h::
 ;vk1Dsc07B & s::
-	if GetKeyState("ctrl", "P"){
+	if GetKeyState("ctrl", "P") {
 		Send +{Left}
-	}else if GetKeyState("shift", "P"){
+	} else if GetKeyState("shift", "P") {
 		Send ^{Left}
-	}else{
+	} else {
 		Send {Left}
 	}
 	return
 ;無変換+(j or d) => 下
 vk1Dsc07B & j::
 ;vk1Dsc07B & d::
-	if GetKeyState("ctrl", "P"){
+	if GetKeyState("ctrl", "P") {
 		Send +{Down}
-	}else if GetKeyState("shift", "P"){
+	} else if GetKeyState("shift", "P") {
 		Send ^{Down}
-	}else{
+	} else {
 		if WinActive("ahk_class Framework::CFrame") {
 			; One Noteで上下キーSendが効かないので代用
 			Send ^{Down}
@@ -43,11 +43,11 @@ vk1Dsc07B & j::
 ;無変換+(k or e) => 上
 vk1Dsc07B & k::
 ;vk1Dsc07B & e::
-	If GetKeyState("ctrl", "P"){
+	If GetKeyState("ctrl", "P") {
 		Send +{Up}
-	}else if GetKeyState("shift", "P"){
+	} else if GetKeyState("shift", "P") {
 		Send ^{Up}
-	}else{
+	} else {
 		if WinActive("ahk_class Framework::CFrame") {
 			; One Noteで上下キーSendが効かないので代用
 			Send ^{Up}
@@ -59,11 +59,11 @@ vk1Dsc07B & k::
 ;無変換+(l or f) => 右
 vk1Dsc07B & l::
 ;vk1Dsc07B & f::
-	If GetKeyState("ctrl", "P"){
+	If GetKeyState("ctrl", "P") {
 		Send +{Right}
-	}else if GetKeyState("shift", "P"){
+	} else if GetKeyState("shift", "P") {
 		Send ^{Right}
-	}else{
+	} else {
 		Send {Right}
 	}
 	return
@@ -82,22 +82,22 @@ vk1Dsc07B & m::
 
 ;無変換+io => Home,End
 vk1Dsc07B & i::
-	if GetKeyState("ctrl", "P"){
+	if GetKeyState("ctrl", "P") {
 		Send +{Home}
-	}else if GetKeyState("shift", "P"){
+	} else if GetKeyState("shift", "P") {
 		Send ^{Home}
-	}else{
+	} else {
 		Send {Home}
 	}
 	return
 
 ;無変換+o => End
 vk1Dsc07B & o::
-	if GetKeyState("ctrl", "P"){
+	if GetKeyState("ctrl", "P") {
 		Send +{End}
-	}else if GetKeyState("shift", "P"){
+	} else if GetKeyState("shift", "P") {
 		Send ^{End}
-	}else{
+	} else {
 		Send {End}
 	}
 	return
@@ -106,22 +106,22 @@ vk1Dsc07B & o::
 ;無変換+p => PageUp
 ;無変換+p+ctrl => Shift+PageUp
 vk1Dsc07B & p::
-	if GetKeyState("ctrl", "P"){
+	if GetKeyState("ctrl", "P") {
 		Send +{pgup}
-	}else if GetKeyState("alt", "P"){
+	} else if GetKeyState("alt", "P") {
 		Send !{pgup}
-	}else{
+	} else {
 		Send {pgup}
 	}
 	return
 ;無変換+{;キー} => PageDown
 ;無変換+{;キー}+ctrl => Shift+PageDown
 vk1Dsc07B & vkBBsc027::
-	if GetKeyState("ctrl", "P"){
+	if GetKeyState("ctrl", "P") {
 		Send +{pgdn}
-	}else if GetKeyState("alt", "P"){
+	} else if GetKeyState("alt", "P") {
 		Send !{pgdn}
-	}else{
+	} else {
 		Send {pgdn}
 	}
 	return
@@ -140,7 +140,7 @@ AppsKey & vkDDsc02B::Send {PgDn}
 
 ;変換+p => PrintScreen
 vk1Csc079 & p::
-	if GetKeyState("alt", "P"){
+	if GetKeyState("alt", "P") {
 		Send !{PrintScreen}
 	} else {
 		Send {PrintScreen}
@@ -246,7 +246,7 @@ vk1Csc079 & c::
 
 ;変換+s→systemのプロパティ
 vk1Csc079 & s::
-	if GetKeyState("ctrl", "P"){
+	if GetKeyState("ctrl", "P") {
 		Send #{Pause}
 	}
 	return
@@ -260,7 +260,7 @@ vk1Csc079 & vk20sc039::Reload
 ^v::
 	sendStr := Clipboard
 	num := RegExMatch(sendStr, "[a-zA-Z]:\\")
-	if(num = 1){
+	if(num = 1) {
 		StringReplace, out, sendStr, \, /, All
 		out := """" . out . """"
 		PasteString(out)
@@ -285,7 +285,7 @@ vk1Csc079 & vk20sc039::Reload
 	return
 ;無変換+ctrl+i
 vk1Dsc07B & i::
-	if GetKeyState("ctrl", "P"){
+	if GetKeyState("ctrl", "P") {
 		MsgBox "testset"
 		Send +{Ins}
 	}
@@ -334,13 +334,13 @@ vk1Dsc07B & d::
 
 ;;;;;;util関数;;;;;;
 ;文字列張り付け用関数
-PasteString(String){
+PasteString(String) {
 	Backup := ClipboardAll
 	Clipboard := String
 	Sleep,125
-	If WinActive("ahk_class mintty"){
+	If WinActive("ahk_class mintty") {
 		Send +{Insert}
-	}else{
+	} else {
 		Send ^v
 	}
 	Sleep,125
