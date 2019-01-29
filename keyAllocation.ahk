@@ -14,8 +14,8 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ;無変換+ctrl+[hjkl] => shift+左下上右
 
 ;無変換+(h or s) => 左
-vk1Dsc07B & h::
-;vk1Dsc07B & s::
+vk1D & h::
+;vk1D & s::
 	if GetKeyState("ctrl", "P") {
 		Send +{Left}
 	} else if GetKeyState("shift", "P") {
@@ -25,8 +25,8 @@ vk1Dsc07B & h::
 	}
 	return
 ;無変換+(j or d) => 下
-vk1Dsc07B & j::
-;vk1Dsc07B & d::
+vk1D & j::
+;vk1D & d::
 	if GetKeyState("ctrl", "P") {
 		Send +{Down}
 	} else if GetKeyState("shift", "P") {
@@ -41,8 +41,8 @@ vk1Dsc07B & j::
 	}
 	return
 ;無変換+(k or e) => 上
-vk1Dsc07B & k::
-;vk1Dsc07B & e::
+vk1D & k::
+;vk1D & e::
 	If GetKeyState("ctrl", "P") {
 		Send +{Up}
 	} else if GetKeyState("shift", "P") {
@@ -57,8 +57,8 @@ vk1Dsc07B & k::
 	}
 	return
 ;無変換+(l or f) => 右
-vk1Dsc07B & l::
-;vk1Dsc07B & f::
+vk1D & l::
+;vk1D & f::
 	If GetKeyState("ctrl", "P") {
 		Send +{Right}
 	} else if GetKeyState("shift", "P") {
@@ -70,7 +70,7 @@ vk1Dsc07B & l::
 
 
 ;無変換+m => 下に行を挿入
-vk1Dsc07B & m::
+vk1D & m::
 	if WinActive("ahk_class SWT_Window0") {
 		Send {Esc}
 		Send {Esc}
@@ -81,7 +81,7 @@ vk1Dsc07B & m::
 
 
 ;無変換+io => Home,End
-vk1Dsc07B & i::
+vk1D & i::
 	if GetKeyState("ctrl", "P") {
 		Send +{Home}
 	} else if GetKeyState("shift", "P") {
@@ -92,7 +92,7 @@ vk1Dsc07B & i::
 	return
 
 ;無変換+o => End
-vk1Dsc07B & o::
+vk1D & o::
 	if GetKeyState("ctrl", "P") {
 		Send +{End}
 	} else if GetKeyState("shift", "P") {
@@ -105,7 +105,7 @@ vk1Dsc07B & o::
 
 ;無変換+p => PageUp
 ;無変換+p+ctrl => Shift+PageUp
-vk1Dsc07B & p::
+vk1D & p::
 	if GetKeyState("ctrl", "P") {
 		Send +{pgup}
 	} else if GetKeyState("alt", "P") {
@@ -116,7 +116,7 @@ vk1Dsc07B & p::
 	return
 ;無変換+{;キー} => PageDown
 ;無変換+{;キー}+ctrl => Shift+PageDown
-vk1Dsc07B & vkBBsc027::
+vk1D & vkBB::
 	if GetKeyState("ctrl", "P") {
 		Send +{pgdn}
 	} else if GetKeyState("alt", "P") {
@@ -127,19 +127,19 @@ vk1Dsc07B & vkBBsc027::
 	return
 
 ;変換+e => Esc
-vk1Csc079 & e::
+vk1C & e::
 	Send {Esc}
 	return
 
 ;アプリケーションキー+[ => page up
 ;アプリケーションキー+] => page down
 ;AppsKey+[ => PgUp
-AppsKey & vkDBsc01B::Send {PgUp}
+AppsKey & vkDB::Send {PgUp}
 ;AppsKey+] => PgDn
-AppsKey & vkDDsc02B::Send {PgDn}
+AppsKey & vkDD::Send {PgDn}
 
 ;変換+p => PrintScreen
-vk1Csc079 & p::
+vk1C & p::
 	if GetKeyState("alt", "P") {
 		Send !{PrintScreen}
 	} else {
@@ -166,7 +166,7 @@ F1::
 	}
 	return
 ;Excelでalt+:→ctrl+PageDown
-!vkBBsc027::
+!vkBB::
 	if WinActive("ahk_class XLMAIN") {
 		Send ^{pgdn}
 	}
@@ -213,23 +213,23 @@ F1::
 	return
 
 ;右Win→Alt
-vk5Csc15C::vkA4sc038
+vk5C::vkA4
 
 ;chrome上でctrl+("+" or "-")による拡大無効化
 #If WinActive("ahk_class Chrome_WidgetWin_1")
-^vkBBsc027::
+^vkBB::
 	return
-^vkBDsc00C::
+^vkBD::
 	return
 #IfWinActive
 
 ;無変換+変換→alt+shift+space(Wox用)
-vk1Dsc07B & vk1Csc079 ::
+vk1D & vk1C::
 	Send !+{Space}
 	return
 
 ;変換+d→Downloadフォルダ
-vk1Csc079 & d::
+vk1C & d::
 	if WinActive("ahk_class CabinetWClass") {
 		Send ^l
 		PasteString("C:\Users\tom\Downloads")
@@ -240,19 +240,19 @@ vk1Csc079 & d::
 	return
 
 ;変換+c→(Win+shift+2)Chrome
-vk1Csc079 & c::
+vk1C & c::
 	Send #+2
 	return
 
 ;変換+s→systemのプロパティ
-vk1Csc079 & s::
+vk1C & s::
 	if GetKeyState("ctrl", "P") {
 		Send #{Pause}
 	}
 	return
 
 ;変換+space=>スクリプトリロード
-vk1Csc079 & vk20sc039::Reload
+vk1C & vk20::Reload
 
 ;ctrl+vで張り付け(cygwin用)
 ;パスをコピペする時に \ → / に変換して貼り付け
@@ -284,7 +284,7 @@ vk1Csc079 & vk20sc039::Reload
 	Send !{Space}ep	;貼り付け
 	return
 ;無変換+ctrl+i
-vk1Dsc07B & i::
+vk1D & i::
 	if GetKeyState("ctrl", "P") {
 		MsgBox "testset"
 		Send +{Ins}
@@ -295,12 +295,12 @@ vk1Dsc07B & i::
 ;;;;;;bootcamp対応;;;;;;
 
 ;無変換+e→英語
-vk1Dsc07B & e::
+vk1D & e::
 	IME_SET(0)
 	return
 
 ;変換+l→日本語
-vk1Csc079 & l::
+vk1C & l::
 	IME_SET(1)
 	return
 
@@ -323,7 +323,7 @@ IME_SET(SetSts, WinTitle="A") {
 }
 
 ;無変換+d→delete
-vk1Dsc07B & d::
+vk1D & d::
 	Send {Delete}
 	return
 
