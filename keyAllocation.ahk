@@ -228,10 +228,11 @@ vk1D & vk1C::
 vk1C & d::
 	if WinActive("ahk_class CabinetWClass") {
 		Send ^l
-		PasteString("C:\Users\tom\Downloads")
+		path = C:\Users\%A_UserName%\Downloads
+		PasteString(path)
 		Send {Enter}
 	} else {
-		Run, C:\Users\tom\Downloads
+		Run, C:\Users\%A_UserName%\Downloads
 	}
 	return
 
