@@ -13,9 +13,8 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ;無変換+[hjkl] => 左下上右
 ;無変換+ctrl+[hjkl] => shift+左下上右
 
-;無変換+(h or s) => 左
+;無変換+h => 左
 vk1D & h::
-;vk1D & s::
 	if GetKeyState("ctrl", "P") {
 		Send +{Left}
 	} else if GetKeyState("shift", "P") {
@@ -24,9 +23,8 @@ vk1D & h::
 		Send {Left}
 	}
 	return
-;無変換+(j or d) => 下
+;無変換+j => 下
 vk1D & j::
-;vk1D & d::
 	if GetKeyState("ctrl", "P") {
 		Send +{Down}
 	} else if GetKeyState("shift", "P") {
@@ -40,9 +38,8 @@ vk1D & j::
 		}
 	}
 	return
-;無変換+(k or e) => 上
+;無変換+k => 上
 vk1D & k::
-;vk1D & e::
 	If GetKeyState("ctrl", "P") {
 		Send +{Up}
 	} else if GetKeyState("shift", "P") {
@@ -56,9 +53,8 @@ vk1D & k::
 		}
 	}
 	return
-;無変換+(l or f) => 右
+;無変換+l => 右
 vk1D & l::
-;vk1D & f::
 	If GetKeyState("ctrl", "P") {
 		Send +{Right}
 	} else if GetKeyState("shift", "P") {
