@@ -224,8 +224,8 @@ vk1D & vk1C::
 	Send !+{Space}
 	return
 
-;変換+d→Downloadフォルダ
-vk1C & d::
+;変換+g→Downloadフォルダ
+vk1C & g::
 	if WinActive("ahk_class CabinetWClass") {
 		Send ^l
 		path = C:\Users\%A_UserName%\Downloads
