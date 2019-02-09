@@ -324,8 +324,8 @@ vk1D & d::
 	Send {Delete}
 	return
 
-;alt+F2→alt+F4
-!F2::
+;無変換+q→alt+F4
+vk1D & q::
 	Send !{F4}
 	return
 
