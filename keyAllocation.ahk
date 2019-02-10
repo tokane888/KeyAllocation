@@ -143,13 +143,13 @@ vk1C & p::
 	}
 	return 
 
-;無変換+1→F1
+;無変換+1 => F1
 vk1D & 1::Send {F1}
-;無変換+5→F5
+;無変換+5 => F5
 vk1D & 5::Send {F5}
 
 ;メモ帳,excel,chrome,sakuraエディタではF1キー無効化
-;F1=>半角/全角
+;F1 => 半角/全角
 F1::
 	if WinActive("ahk_class Notepad")
 	|| WinActive("ahk_class XLMAIN")
@@ -160,19 +160,19 @@ F1::
 	Send {F1}
 	return
 
-;Excelでalt+p→ctrl+PageUp
+;Excelでalt+p => ctrl+PageUp
 !p::
 	if WinActive("ahk_class XLMAIN") {
 		Send ^{pgup}
 	}
 	return
-;Excelでalt+:→ctrl+PageDown
+;Excelでalt+: => ctrl+PageDown
 !vkBB::
 	if WinActive("ahk_class XLMAIN") {
 		Send ^{pgdn}
 	}
 	return
-;Excel VBEでctrl+k→自動構文チェックon/off切り替え
+;Excel VBEでctrl+k => 自動構文チェックon/off切り替え
 ^k::
 	if WinActive("ahk_class wndclass_desked_gsk") {
 		Send !t
@@ -184,8 +184,8 @@ F1::
 	}
 	return
 
-;メモ帳で ctrl+w=>alt+F4
-;桜エディタで ctrl+w=>ctrl+F4
+;メモ帳で ctrl+w => alt+F4
+;桜エディタで ctrl+w => ctrl+F4
 ^w::
 	if WinActive("ahk_class Notepad") {
 		Send !{F4}
@@ -200,20 +200,20 @@ F1::
 	Send ^w
 	return
 	
-;eclipseでAlt+h=>Alt+左
+;eclipseでAlt+h => Alt+左
 !h::
 	if WinActive("ahk_class SWT_Window0") {
 		Send !{Left}
 	}
 	return
-;eclipseでAlt+l=>Alt+右
+;eclipseでAlt+l => Alt+右
 !l::
 	if WinActive("ahk_class SWT_Window0") {
 		Send !{Right}
 	}
 	return
 
-;右Win→Alt
+;右Win => Alt
 vk5C::vkA4
 
 ;chrome上でctrl+("+" or "-")による拡大無効化
@@ -224,12 +224,12 @@ vk5C::vkA4
 	return
 #IfWinActive
 
-;無変換+変換→alt+shift+space(Wox用)
+;無変換+変換 => alt+shift+space(Wox用)
 vk1D & vk1C::
 	Send !+{Space}
 	return
 
-;変換+g→Downloadフォルダ
+;変換+g => Downloadフォルダ
 vk1C & g::
 	if WinActive("ahk_class CabinetWClass") {
 		Send ^l
@@ -241,23 +241,23 @@ vk1C & g::
 	}
 	return
 
-;変換+c→(Win+shift+2)Chrome
+;変換+c => (Win+shift+2)Chrome
 vk1C & c::
 	Send #+2
 	return
 
-;変換+s→systemのプロパティ
+;変換+s => systemのプロパティ
 vk1C & s::
 	if GetKeyState("ctrl", "P") {
 		Send #{Pause}
 	}
 	return
 
-;変換+space=>スクリプトリロード
+;変換+space => スクリプトリロード
 vk1C & vk20::Reload
 
 ;ctrl+vで張り付け(cygwin用)
-;パスをコピペする時に \ → / に変換して貼り付け
+;パスをコピペする時に \  =>  / に変換して貼り付け
 #If WinActive("ahk_class mintty")
 ^v::
 	sendStr := Clipboard
@@ -296,12 +296,12 @@ vk1D & i::
 
 ;;;;;;bootcamp対応;;;;;;
 
-;無変換+e→英語
+;無変換+e => 英語
 vk1D & e::
 	IME_SET(0)
 	return
 
-;変換+l→日本語
+;変換+l => 日本語
 vk1C & l::
 	IME_SET(1)
 	return
@@ -324,13 +324,13 @@ IME_SET(SetSts, WinTitle="A") {
         ,     Int, SetSts) ;lParam  : 0 or 1
 }
 
-;無変換+d→delete
+;無変換+d => delete
 vk1D & d::
 	Send {Delete}
 	return
 
-;無変換+q→alt+F4
-;alt+F2 →alt+F4
+;無変換+q => alt+F4
+;alt+F2  => alt+F4
 vk1D & q::
 !F2::
 	Send !{F4}
