@@ -143,6 +143,11 @@ vk1C & p::
 	}
 	return 
 
+;無変換+1→F1
+vk1D & 1::Send {F1}
+;無変換+5→F5
+vk1D & 5::Send {F5}
+
 ;メモ帳,excel,chrome,sakuraエディタではF1キー無効化
 ;F1=>半角/全角
 F1::
