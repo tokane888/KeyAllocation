@@ -149,7 +149,6 @@ vk1D & 1::Send {F1}
 vk1D & 5::Send {F5}
 
 ;メモ帳,excel,chrome,sakuraエディタではF1キー無効化
-;F1 => 半角/全角
 F1::
 	if WinActive("ahk_class Notepad")
 	|| WinActive("ahk_class XLMAIN")
