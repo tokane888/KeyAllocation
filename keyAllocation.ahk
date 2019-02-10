@@ -325,7 +325,9 @@ vk1D & d::
 	return
 
 ;無変換+q→alt+F4
+;alt+F2 →alt+F4
 vk1D & q::
+!F2::
 	Send !{F4}
 	return
 
