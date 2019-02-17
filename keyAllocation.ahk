@@ -323,9 +323,9 @@ IME_SET(SetSts, WinTitle="A") {
     }
     return DllCall("SendMessage"
         , UInt, DllCall("imm32\ImmGetDefaultIMEWnd", Uint,hwnd)
-        , UInt, 0x0283  ;Message : WM_IME_CONTROL
-        ,     Int, 0x006      ;wParam  : IMC_SETOPENSTATUS
-        ,     Int, SetSts) ;lParam  : 0 or 1
+        , UInt, 0x0283 ;Message : WM_IME_CONTROL
+        , Int, 0x006   ;wParam  : IMC_SETOPENSTATUS
+        , Int, SetSts) ;lParam  : 0 or 1
 }
 
 ;無変換+d => delete
