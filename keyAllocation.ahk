@@ -150,9 +150,6 @@ vk1D & 2::Send {F2}
 ;無変換+5 => F5
 vk1D & 5::Send {F5}
 
-;変換+r => Delete
-vk1C & r::Send {Delete}
-
 ;メモ帳,excel,chrome,sakuraエディタではF1キー無効化
 F1::
 	if WinActive("ahk_class Notepad")
