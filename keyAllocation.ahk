@@ -202,16 +202,30 @@ F1::
 	return
 	
 ;eclipseでAlt+h => Alt+左
+;他ならctrl+win+左 (左の仮想ディスプレイへ移動)
 !h::
 	if WinActive("ahk_class SWT_Window0") {
 		Send !{Left}
+		return
 	}
+	else {
+		Send ^#{Left}
+		return
+	}
+	Send !h
 	return
 ;eclipseでAlt+l => Alt+右
+;他ならctrl+win+右 (右の仮想ディスプレイへ移動)
 !l::
 	if WinActive("ahk_class SWT_Window0") {
 		Send !{Right}
+		return
 	}
+	else {
+		Send ^#{Right}
+		return
+	}
+	Send !l
 	return
 
 ;右Win => Alt
