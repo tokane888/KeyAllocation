@@ -233,15 +233,17 @@ vk1D & vk1C::
 	Send !+{Space}
 	return
 
-;変換+g => Downloadフォルダ
-vk1C & g::
-	if WinActive("ahk_class CabinetWClass") {
-		Send ^l
-		path = C:\Users\%A_UserName%\Downloads
-		PasteString(path)
-		Send {Enter}
-	} else {
-		Run, C:\Users\%A_UserName%\Downloads
+;変換+ctrl+d => Downloadフォルダを開く
+vk1C & d::
+	if GetKeyState("ctrl", "P") {
+		if WinActive("ahk_class CabinetWClass") {
+			Send ^l
+			path = C:\Users\%A_UserName%\Downloads
+			PasteString(path)
+			Send {Enter}
+		} else {
+			Run, C:\Users\%A_UserName%\Downloads
+		}
 	}
 	return
 
