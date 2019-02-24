@@ -252,7 +252,7 @@ vk1C & c::
 	Send #+2
 	return
 
-;変換+s => systemのプロパティ
+;変換+ctrl+s => systemのプロパティ
 vk1C & s::
 	if GetKeyState("ctrl", "P") {
 		Send #{Pause}
