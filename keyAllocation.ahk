@@ -302,13 +302,6 @@ vk1C & vk20::Reload
 ^v::
 	Send !{Space}ep	;貼り付け
 	return
-;無変換+ctrl+i
-vk1D & i::
-	if GetKeyState("ctrl", "P") {
-		MsgBox "testset"
-		Send +{Ins}
-	}
-	return
 #IfWinActive
 
 ;;;;;;bootcamp対応;;;;;;
