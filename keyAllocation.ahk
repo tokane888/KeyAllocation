@@ -231,18 +231,17 @@ F1::
 ;右Win => Alt
 vk5C::vkA4
 
-;chrome上でctrl+("+" or "-")による拡大無効化
-;それ以外なら ctrl+";" => BackSpace
+;ctrl+";" => BackSpace
 ^vkBB::
-	if WinActive("ahk_exe chrome.exe") {
-		return
-	}
 	Send {BackSpace}
 	return
+;chrome上でctrl+"-"による拡大無効化
 ^vkBD::
 	if WinActive("ahk_exe chrome.exe") {
 		return
 	}
+	Send ^{vkBD}
+	return
 
 ;無変換+変換 => alt+shift+space(Wox用)
 vk1D & vk1C::
