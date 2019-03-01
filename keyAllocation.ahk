@@ -202,27 +202,17 @@ F1::
 	return
 	
 ;eclipseでAlt+h => Alt+左
-;他ならctrl+win+左 (左の仮想ディスプレイへ移動)
 !h::
 	if WinActive("ahk_class SWT_Window0") {
 		Send !{Left}
 		return
 	}
-	else {
-		Send ^#{Left}
-		return
-	}
 	Send !h
 	return
 ;eclipseでAlt+l => Alt+右
-;他ならctrl+win+右 (右の仮想ディスプレイへ移動)
 !l::
 	if WinActive("ahk_class SWT_Window0") {
 		Send !{Right}
-		return
-	}
-	else {
-		Send ^#{Right}
 		return
 	}
 	Send !l
@@ -266,6 +256,11 @@ vk1C & d::
 vk1C & c::
 	Send #+2
 	return
+
+;変換+i => ctrl+win+左 (左の仮想ディスプレイへ移動)
+vk1c & i::Send ^#{Left}
+;変換+o => ctrl+win+右 (右の仮想ディスプレイへ移動)
+vk1c & o::Send ^#{Right}
 
 ;変換+ctrl+s => systemのプロパティ
 vk1C & s::
