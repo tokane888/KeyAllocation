@@ -230,6 +230,10 @@ vk5C::vkA4
 
 ;ctrl+";" => BackSpace
 ^vkBB::
+	if WinActive("ahk_exe EXCEL.EXE") {
+		Send ^{vkBB}
+		return
+	}
 	Send {BackSpace}
 	return
 ;chrome上でctrl+"-"による拡大無効化
