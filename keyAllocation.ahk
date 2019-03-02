@@ -123,9 +123,7 @@ vk1D & vkBB::
 	return
 
 ;変換+e => Esc
-vk1C & e::
-	Send {Esc}
-	return
+vk1C & e::Send {Esc}
 ;変換+w => alt+shift+space(Wox用)
 vk1C & w::Send !+{Space}
 
