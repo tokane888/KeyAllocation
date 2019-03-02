@@ -126,6 +126,8 @@ vk1D & vkBB::
 vk1C & e::
 	Send {Esc}
 	return
+;変換+w => alt+shift+space(Wox用)
+vk1C & w::Send !+{Space}
 
 ;アプリケーションキー+[ => page up
 ;アプリケーションキー+] => page down
@@ -231,11 +233,6 @@ vk5C::vkA4
 		return
 	}
 	Send ^{vkBD}
-	return
-
-;無変換+変換 => alt+shift+space(Wox用)
-vk1D & vk1C::
-	Send !+{Space}
 	return
 
 ;変換+ctrl+d => Downloadフォルダを開く
