@@ -143,12 +143,19 @@ vk1C & p::
 	}
 	return 
 
-;無変換+1 => F1
+;無変換+数字 => F[数字]
 vk1D & 1::Send {F1}
-;無変換+2 => F2
 vk1D & 2::Send {F2}
-;無変換+5 => F5
+vk1D & 3::Send {F3}
+vk1D & 4::Send {F4}
 vk1D & 5::Send {F5}
+vk1D & 6::Send {F6}
+vk1D & 7::Send {F7}
+vk1D & 8::Send {F8}
+vk1D & 9::Send {F9}
+vk1D & 0::Send {F10}
+vk1D & -::Send {F11}
+vk1D & ^::Send {F12}
 
 ;メモ帳,excel,chrome,sakuraエディタではF1キー無効化
 F1::
