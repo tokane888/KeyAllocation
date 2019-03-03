@@ -321,6 +321,15 @@ vk1C & l::
 	IME_SET(1)
 	return
 
+;chrome上で全角/半角 => ctrl+1
+vkF3::
+	if WinActive("ahk_class Chrome_WidgetWin_1") {
+		Send ^{1}
+		return
+	}
+	Send {vkF3}
+	return
+
 ; IME_SET(0) -> 英数
 ; IME_SET(1) -> かな
 IME_SET(SetSts, WinTitle="A") {
