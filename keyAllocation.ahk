@@ -228,6 +228,9 @@ F1::
 ;右Win => Alt
 vk5C::vkA4
 
+;左win+k => win + 上
+vk5B & k::Send #{Up}
+
 ;ctrl+";" => BackSpace
 ^vkBB::
 	if WinActive("ahk_exe EXCEL.EXE") {
