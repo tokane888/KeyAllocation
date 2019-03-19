@@ -258,6 +258,16 @@ vk1C & d::
 	}
 	return
 
+;Explorerでctrl+d => ファイル/フォルダ一覧へフォーカス
+^d::
+	if WinActive("ahk_class CabinetWClass") {
+		Send ^l
+		Send {Tab 3}
+		return
+	}
+	Send ^d
+	return
+
 ;変換+c => (Win+shift+2)Chrome
 vk1C & c::
 	Send #+2
