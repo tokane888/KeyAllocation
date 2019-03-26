@@ -236,6 +236,16 @@ vk5C::vkA4
 	}
 	Send {BackSpace}
 	return
+
+;chrome上で ctrl+":" => alt+→
+^vkBA::
+	if WinActive("ahk_exe chrome.exe") {
+		Send !{Right}
+		return
+	}
+	Send ^{vkBA}
+	return
+
 ;chrome上でctrl+"-"による拡大無効化
 ^vkBD::
 	if WinActive("ahk_exe chrome.exe") {
