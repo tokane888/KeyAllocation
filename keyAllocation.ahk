@@ -297,9 +297,12 @@ vk1C & s::
 
 ;変換+j => win+上
 vk1C & j::Send #{Up}
-
 ;変換+m => win+下
 vk1C & m::Send #{Down}
+;変換+h => win+左
+vk1C & h::Send #{Left}
+;変換+k => win+右
+vk1C & k::Send #{Right}
 
 ;変換+space => スクリプトリロード
 vk1C & vk20::Reload
