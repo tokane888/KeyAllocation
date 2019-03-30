@@ -269,10 +269,15 @@ vk1C & d::
 	return
 
 ;Explorerでctrl+d => ファイル/フォルダ一覧へフォーカス
+;visual studio codeのフォルダを開くダイアログでも動作
 ^d::
 	if WinActive("ahk_class CabinetWClass") {
 		Send ^l
 		Send {Tab 3}
+		return
+	} else if WinActive("ahk_class #32770") {
+		Send ^l
+		Send {Tab 4}
 		return
 	}
 	Send ^d
