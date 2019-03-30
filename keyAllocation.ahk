@@ -295,6 +295,12 @@ vk1C & s::
 	}
 	return
 
+;変換+j => win+上
+vk1C & j::Send #{Up}
+
+;変換+m => win+下
+vk1C & m::Send #{Down}
+
 ;変換+space => スクリプトリロード
 vk1C & vk20::Reload
 
