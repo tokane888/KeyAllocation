@@ -376,6 +376,12 @@ UpDownSnap(Direction)
   WinGetPos, x, y, w, h, a, , ,
   SysGet , Count, MonitorCount
   refArea := 0
+  if (x < 0) {
+    x := 0
+  }
+  if (y < 0) {
+    y := 0
+  }
   Loop, %count%
   {
     SysGet, m, MonitorWorkArea, %A_Index%
@@ -400,11 +406,6 @@ UpDownSnap(Direction)
       newY := monTop
     Else
       newY := (monBottom - monTop) / 2 + monTop
-    ; MsgBox %monLeft%
-    ; MsgBox %newY%
-    ; MsgBox %monRight%
-    ; MsgBox %monTop%
-    ; MsgBox %monBottom%
 
     WinMove , A, , monLeft, newY, (monRight - monLeft), (monBottom - monTop) / 2
   }
