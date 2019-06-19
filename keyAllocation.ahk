@@ -285,7 +285,7 @@ vk1C & d::
 
 ;変換+c => (Win+shift+2)Chrome
 vk1C & c::
-	Send #+2
+  Run , C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
 	return
 
 ;変換+i => ctrl+win+左 (左の仮想ディスプレイへ移動)
