@@ -246,7 +246,7 @@ vk5C::vkA4
 	Send ^{vkBA}
 	return
 
-;chrome上でctrl+"-"による拡大無効化
+;chrome上でctrl+"-"による縮小無効化
 ^vkBD::
 	if WinActive("ahk_exe chrome.exe") {
 		return
