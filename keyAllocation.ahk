@@ -418,6 +418,9 @@ vk1D & e::
 
 ;変換+l => 日本語
 vk1C & l::
+  ; chrome上でうまく動かない場合があるので応急措置
+	IME_SET(0)
+  
 	IME_SET(1)
 	return
 
