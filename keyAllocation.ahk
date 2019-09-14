@@ -283,7 +283,7 @@ vk1C & d::
 	Send ^d
 	return
 
-;変換+c => (Win+shift+2)Chrome
+;変換+c => Chrome起動
 vk1C & c::
   Run , C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
 	return
