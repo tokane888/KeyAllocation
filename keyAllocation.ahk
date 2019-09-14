@@ -300,6 +300,18 @@ vk1C & s::
 	}
 	return
 
+;bootcampで何故か ctrl+1=>全角/半角 に変換される対策
+;個人pcで全角/半角 => ctrl+1
+vkF3::
+vkF4::
+  ;個人PCでのみ動作させるためのworkaround
+  if (%A_UserName% == tom) {
+    Send ^{1}
+    return
+  }
+  Send {vkF3}
+  return
+
 ;変換+j => win+上
 vk1C & j::Send #{Up}
 ;変換+m => win+下
