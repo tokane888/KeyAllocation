@@ -415,6 +415,12 @@ UpDownSnap(Direction)
     Else
       newY := (monBottom - monTop) / 2 + monTop
 
+    ; chromeではウィンドウ下と左右に-12pxのマージンがあるのでその分増やして設定
+    If WinActive("ahk_exe chrome.exe") {
+      WinMove , A, , monLeft-12, newY, (monRight - monLeft)+24, (monBottom - monTop) / 2 + 12
+      return
+    }
+
     WinMove , A, , monLeft, newY, (monRight - monLeft), (monBottom - monTop) / 2
   }
 }
