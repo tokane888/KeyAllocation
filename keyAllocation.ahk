@@ -305,7 +305,7 @@ vk1C & s::
 vkF3::
 vkF4::
   ;個人PCでのみ動作させるためのworkaround
-  if (%A_UserName% == tom) {
+  if ("%A_UserName%" == tom) {
     Send ^{1}
     return
   }
