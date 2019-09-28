@@ -305,10 +305,15 @@ vk1C & s::
 vkF3::
 vkF4::
   ;個人PCでのみ動作させるためのworkaround
-  if ("%A_UserName%" == tom) {
+  ;空白を含むユーザ名の比較は実行時エラーになるので対応
+  IfInString, %A_UserName%, %A_Space%, {
+    return
+  }
+  if (%A_UserName% == tom) {
     Send ^{1}
     return
   }
+  
   Send {vkF3}
   return
 
