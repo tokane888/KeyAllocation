@@ -144,18 +144,18 @@ vk1C & p::
 	return 
 
 ;無変換+数字 => F[数字]
-vk1D & 1::Send {F1}
-vk1D & 2::Send {F2}
-vk1D & 3::Send {F3}
-vk1D & 4::Send {F4}
-vk1D & 5::Send {F5}
-vk1D & 6::Send {F6}
-vk1D & 7::Send {F7}
-vk1D & 8::Send {F8}
-vk1D & 9::Send {F9}
-vk1D & 0::Send {F10}
-vk1D & -::Send {F11}
-vk1D & ^::Send {F12}
+vk1D & 1::Send,{Blind}{F1}
+vk1D & 2::Send,{Blind}{F2}
+vk1D & 3::Send,{Blind}{F3}
+vk1D & 4::Send,{Blind}{F4}
+vk1D & 5::Send,{Blind}{F5}
+vk1D & 6::Send,{Blind}{F6}
+vk1D & 7::Send,{Blind}{F7}
+vk1D & 8::Send,{Blind}{F8}
+vk1D & 9::Send,{Blind}{F9}
+vk1D & 0::Send,{Blind}{F10}
+vk1D & -::Send,{Blind}{F11}
+vk1D & ^::Send,{Blind}{F12}
 
 ;メモ帳,excel,chrome,sakuraエディタではF1キー無効化
 F1::
