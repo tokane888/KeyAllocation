@@ -305,8 +305,8 @@ vk1C & s::
 vkF3::
 vkF4::
   ;個人PCでのみ動作させるためのworkaround
-  ;空白を含むユーザ名の比較は実行時エラーになるので対応
-  IfInString, %A_UserName%, %A_Space%, {
+  ;空白を含むユーザ名の比較による実行時エラー抑止
+  if InStr(%A_UserName%, " ") {
     return
   }
   if (%A_UserName% == tom) {
