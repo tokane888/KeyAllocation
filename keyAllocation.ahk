@@ -307,6 +307,7 @@ vkF4::
   ;個人PCでのみ動作させるためのworkaround
   ;空白を含むユーザ名の比較による実行時エラー抑止
   if InStr(A_UserName, " ") {
+    InputLastHanZenkakuKey()
     return
   }
   if (%A_UserName% == tom) {
@@ -316,6 +317,17 @@ vkF4::
   
   Send {vkF3}
   return
+
+; 直前に入力された半角又ぜ全角キーを再送信
+InputLastHanZenkakuKey() {
+  if GetKeyState("vkF3", "P") {
+    Send {vkF3}
+  }
+  else if GetKeyState("vkF4", "P") {
+    Send {vkF4}
+  }
+  return
+}
 
 ;変換+j => win+上
 vk1C & j::Send #{Up}
