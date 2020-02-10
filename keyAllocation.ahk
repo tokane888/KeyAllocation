@@ -144,7 +144,15 @@ vk1C & p::
 	return 
 
 ;無変換+数字 => F[数字]
-vk1D & 1::Send,{Blind}{F1}
+vk1D & 1::
+  if WinActive("ahk_class Notepad")
+	|| WinActive("ahk_class XLMAIN")
+	|| WinActive("ahk_class Chrome_WidgetWin_1")
+	|| WinActive("ahk_class TextEditorWindowW166") {
+		return
+	}
+  Send,{Blind}{F1}
+  return
 vk1D & 2::Send,{Blind}{F2}
 vk1D & 3::Send,{Blind}{F3}
 vk1D & 4::Send,{Blind}{F4}
