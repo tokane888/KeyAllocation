@@ -141,7 +141,7 @@ vk1C & p::
 	} else {
 		Send {PrintScreen}
 	}
-	return 
+	return
 
 ;無変換+数字 => F[数字]
 vk1D & 1::
@@ -215,7 +215,7 @@ F1::
 	}
 	Send ^w
 	return
-	
+
 ;eclipseでAlt+h => Alt+左
 !h::
 	if WinActive("ahk_class SWT_Window0") {
@@ -322,7 +322,7 @@ vkF4::
     Send ^{1}
     return
   }
-  
+
   Send {vkF3}
   return
 
@@ -463,7 +463,7 @@ vk1D & e::
 vk1C & l::
   ; chrome上でうまく動かない場合があるので応急措置
 	IME_SET(0)
-  
+
 	IME_SET(1)
 	return
 
