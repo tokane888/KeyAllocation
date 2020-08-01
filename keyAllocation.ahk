@@ -281,7 +281,13 @@ vk1C & d::
 ^d::
 	if WinActive("ahk_class CabinetWClass") {
 		Send ^l
-		Send {Tab 3}
+    ; 間隔を開けずに3連続入力を行うと、フォーカスが合わない場合がある
+    Sleep 75
+    Send {Tab}
+    Sleep 75
+    Send {Tab}
+    Sleep 75
+    Send {Tab}
 		return
 	} else if WinActive("ahk_class #32770") {
 		Send ^l
