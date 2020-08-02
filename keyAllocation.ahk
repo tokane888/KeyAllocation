@@ -291,8 +291,15 @@ vk1C & d::
 		return
 	} else if WinActive("ahk_class #32770") {
 		Send ^l
-		Send {Tab 4}
-		return
+    Sleep 75
+    Send {Tab}
+    Sleep 75
+    Send {Tab}
+    Sleep 75
+    Send {Tab}
+    Sleep 75
+    Send {Tab}
+    return
 	}
 	Send ^d
 	return
