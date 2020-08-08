@@ -281,24 +281,12 @@ vk1C & d::
 ^d::
   if WinActive("ahk_class CabinetWClass") {
     Send ^l
-    ; 間隔を開けずに3連続入力を行うと、フォーカスが合わない場合がある
-    Sleep 75
-    Send {Tab}
-    Sleep 75
-    Send {Tab}
-    Sleep 75
-    Send {Tab}
+    ; tabキー連打の場合、検索ボックスからの移動に失敗ふる場合があるのでshift+tab連打
+    Send +{Tab 4}
     return
   } else if WinActive("ahk_class #32770") {
     Send ^l
-    Sleep 75
-    Send {Tab}
-    Sleep 75
-    Send {Tab}
-    Sleep 75
-    Send {Tab}
-    Sleep 75
-    Send {Tab}
+    Send +{Tab 6}
     return
   }
   Send ^d
