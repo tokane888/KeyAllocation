@@ -280,13 +280,10 @@ vk1C & d::
 ;visual studio codeのフォルダを開くダイアログでも動作
 ^d::
   if WinActive("ahk_class CabinetWClass") {
-    Send ^l
-    ; tabキー連打の場合、検索ボックスからの移動に失敗ふる場合があるのでshift+tab連打
-    Send +{Tab 4}
+    ControlFocus, DirectUIHWND2
     return
   } else if WinActive("ahk_class #32770") {
-    Send ^l
-    Send +{Tab 6}
+    ControlFocus, DirectUIHWND2
     return
   }
   Send ^d
