@@ -324,7 +324,7 @@ vkF4::
   Send {vkF3}
   return
 
-; 直前に入力された半角又ぜ全角キーを再送信
+; 直前に入力された半角又は全角キーを再送信
 InputLastHanZenkakuKey() {
   if GetKeyState("vkF3", "P") {
     Send {vkF3}
