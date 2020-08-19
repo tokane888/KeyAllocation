@@ -189,12 +189,15 @@ F1::
   }
   return
 ;Excel VBEでctrl+k => 自動構文チェックon/off切り替え
+;powershell上でctrl+k => ctrl+End
 ^k::
   if WinActive("ahk_class wndclass_desked_gsk") {
     Send !t
     Send +o
     Send +k
     Send {Enter}
+  } else if WinActive("ahk_exe pwsh.exe") or (WinActive("ahk_exe WindowsTerminal.exe") and WinActive("PowerShell")) {
+    Send ^{End}
   } else {
     Send ^k
   }
