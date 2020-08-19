@@ -324,7 +324,7 @@ vkF4::
   Send {vkF3}
   return
 
-; 直前に入力された半角又は全角キーを再送信
+;直前に入力された半角又は全角キーを再送信
 InputLastHanZenkakuKey() {
   if GetKeyState("vkF3", "P") {
     Send {vkF3}
@@ -465,8 +465,8 @@ vk1C & l::
   IME_SET(1)
   return
 
-; IME_SET(0) -> 英数
-; IME_SET(1) -> かな
+;IME_SET(0) -> 英数
+;IME_SET(1) -> かな
 IME_SET(SetSts, WinTitle="A") {
     ControlGet,hwnd,HWND,,,%WinTitle%
     if (WinActive(WinTitle)) {
