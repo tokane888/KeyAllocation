@@ -228,6 +228,15 @@ F1::
   }
   return
 
+;powershell上でctrl+a => Home
+^a::
+  if WinActive("ahk_exe pwsh.exe") or (WinActive("ahk_exe WindowsTerminal.exe") and WinActive("PowerShell")) {
+    Send {Home}
+  } else {
+    Send ^a
+  }
+  return
+
 ;メモ帳で ctrl+w => alt+F4
 ;桜エディタで ctrl+w => ctrl+F4
 ^w::
