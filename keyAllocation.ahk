@@ -165,6 +165,31 @@ vk1D & 0::Send,{Blind}{F10}
 vk1D & -::Send,{Blind}{F11}
 vk1D & ^::Send,{Blind}{F12}
 
+;surface laptop3上のFnキーを実質常時on状態に
+;F1, F6, F7キーに割当てられているキーボード光調整、明るさup、明るさdownはキーコード送信しないので変更できていない
+Volume_Mute::F2
+Volume_Down::F3
+Volume_Up::F4
+Media_Play_Pause::F5
+PrintScreen::F8
+Home::F9
+End::F10
+PgUp::F11
+PgDn::F12
+
+;変換+F2 => Mute
+vk1C & F2::Volume_Mute
+vk1C & Volume_Mute::Volume_Mute
+;変換+F3 => Volume_Down
+vk1C & F3::Volume_Down
+vk1C & Volume_Down::Volume_Down
+;変換+F4 => Volume_Up
+vk1C & F4::Volume_Up
+vk1C & Volume_Up::Volume_Up
+;変換+F5 => Media_Play_Pause
+vk1C & F5::Media_Play_Pause
+vk1C & Media_Play_Pause::Media_Play_Pause
+
 ;メモ帳,excel,chrome,sakuraエディタではF1キー無効化
 F1::
   if WinActive("ahk_class Notepad")
