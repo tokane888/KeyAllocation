@@ -372,6 +372,9 @@ InputLastHanZenkakuKey() {
   return
 }
 
+;無変換+s => shift+F10(右クリック)
+vk1D & s::Send +{F10}
+
 ;変換+j => win+上
 vk1C & j::Send #{Up}
 ;変換+m => win+下
