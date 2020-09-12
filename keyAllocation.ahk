@@ -319,13 +319,10 @@ vk1C & d::
   if WinActive("ahk_class CabinetWClass") {
     ; エクスプローラー
     ControlGet ctrlVisible, Visible,, DirectUIHWND3
-    Msgbox "point1"
     if (ctrlVisible) {
       ControlFocus, DirectUIHWND3
-      Msgbox "hit"
     } else {
-      Msgbox "bad point"
-      ControlFocus, DirectUIHWND
+      ControlFocus, DirectUIHWND2
     }
     return
   } else if WinActive("ahk_class #32770") {
