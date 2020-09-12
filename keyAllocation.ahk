@@ -317,9 +317,19 @@ vk1C & d::
 ;visual studio codeのフォルダを開くダイアログでも動作
 ^d::
   if WinActive("ahk_class CabinetWClass") {
-    ControlFocus, DirectUIHWND2
+    ; エクスプローラー
+    ControlGet ctrlVisible, Visible,, DirectUIHWND3
+    Msgbox "point1"
+    if (ctrlVisible) {
+      ControlFocus, DirectUIHWND3
+      Msgbox "hit"
+    } else {
+      Msgbox "bad point"
+      ControlFocus, DirectUIHWND
+    }
     return
   } else if WinActive("ahk_class #32770") {
+    ; "フォルダを開く"などのウィンドウ
     ControlFocus, DirectUIHWND2
     return
   }
