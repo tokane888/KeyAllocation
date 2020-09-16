@@ -302,7 +302,7 @@ vk5C::vkA4
 ;変換+ctrl+d => Downloadフォルダを開く
 vk1C & d::
   if GetKeyState("ctrl", "P") {
-    if WinActive("ahk_class CabinetWClass") {
+    if WinActive("ahk_class CabinetWClass") || WinActive("ahk_class #32770") {
       Send ^l
       path = C:\Users\%A_UserName%\Downloads
       PasteString(path)
