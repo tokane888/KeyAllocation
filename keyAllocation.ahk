@@ -123,7 +123,15 @@ vk1D & vkBB::
   return
 
 ;変換+e => Esc
-vk1C & e::Send {Esc}
+; WSL2, windows terminal上でesc => esc+英語入力(vimでnormal mode遷移時に英語入力に切り替えるため)
+vk1C & e::
+esc::
+  If WinActive("ahk_class ConsoleWindowClass") || WinActive("ahk_exe WindowsTerminal.exe") {
+    IME_SET(0)
+  }
+  Send {Esc}
+  return
+
 ;変換+w => alt+shift+space(Wox用)
 vk1C & w::Send !+{Space}
 
