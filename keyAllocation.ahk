@@ -418,6 +418,22 @@ vk1C & vk20::Reload
   return
 #IfWinActive
 
+;ctrl+shift+vでパスを変換して張り付け(Windows Terminal用)
+#If WinActive("ahk_exe WindowsTerminal.exe")
+^+v::
+  sendStr := Clipboard
+  num := RegExMatch(sendStr, "^[a-zA-Z]:\\")
+  if(num = 1) {
+    ;StringReplace, out, sendStr, \, /, All
+    ;out := """" . out . """"
+    out = $(wslpath "%sendStr%")
+    PasteString(out)
+  } else {
+    PasteString(sendStr)
+  }
+  return
+#IfWinActive
+
 ;ctrl+vで張り付け(コマンドプロンプト用)
 #If WinActive("ahk_exe cmd.exe")
 ^v::
@@ -554,6 +570,8 @@ PasteString(String) {
   Sleep,125
   If WinActive("ahk_class mintty") {
     Send +{Insert}
+  } else if WinActive("ahk_exe WindowsTerminal.exe") {
+    Send +^v
   } else {
     Send ^v
   }
