@@ -418,14 +418,6 @@ vk1C & vk20::Reload
   return
 #IfWinActive
 
-;ctrl+vで貼り付け(bash on Ubuntu on Windows)
-#If WinActive("ahk_exe bash.exe")
-^v::
-  SendInput {Raw}%clipboard%
-  return
-
-#IfWinActive
-
 ;ctrl+vで張り付け(コマンドプロンプト用)
 #If WinActive("ahk_exe cmd.exe")
 ^v::
