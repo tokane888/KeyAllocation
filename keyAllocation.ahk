@@ -424,9 +424,7 @@ vk1C & vk20::Reload
   sendStr := Clipboard
   num := RegExMatch(sendStr, "^[a-zA-Z]:\\")
   if(num = 1) {
-    ;StringReplace, out, sendStr, \, /, All
-    ;out := """" . out . """"
-    out = $(wslpath "%sendStr%")
+    out = "$(wslpath "%sendStr%")"
     PasteString(out)
   } else {
     PasteString(sendStr)
