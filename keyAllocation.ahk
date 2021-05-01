@@ -364,35 +364,6 @@ vk1C & s::
   }
   return
 
-;bootcampで何故か ctrl+1=>全角/半角 に変換される対策
-;個人pcで全角/半角 => ctrl+1
-vkF3::
-vkF4::
-  ;個人PCでのみ動作させるためのworkaround
-  ;空白を含むユーザ名の比較による実行時エラー抑止
-  if InStr(A_UserName, " ") {
-    InputLastHanZenkakuKey()
-    return
-  }
-  if (%A_UserName% == tom) {
-    Send ^{1}
-    return
-  }
-
-  Send {vkF3}
-  return
-
-;直前に入力された半角又は全角キーを再送信
-InputLastHanZenkakuKey() {
-  if GetKeyState("vkF3", "P") {
-    Send {vkF3}
-  }
-  else if GetKeyState("vkF4", "P") {
-    Send {vkF4}
-  }
-  return
-}
-
 ;無変換+s => shift+F10(右クリック)
 vk1D & s::Send +{F10}
 
