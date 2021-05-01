@@ -175,15 +175,17 @@ vk1D & ^::Send,{Blind}{F12}
 
 ;surface laptop3上のFnキーを実質常時on状態に
 ;F1, F6, F7キーに割当てられているキーボード光調整、明るさup、明るさdownはキーコード送信しないので変更できていない
-Volume_Mute::F2
-Volume_Down::F3
-Volume_Up::F4
-Media_Play_Pause::F5
-PrintScreen::F8
-Home::F9
-End::F10
-PgUp::F11
-PgDn::F12
+if (%A_UserName% == sutea) {
+  Volume_Mute::F2
+  Volume_Down::F3
+  Volume_Up::F4
+  Media_Play_Pause::F5
+  PrintScreen::F8
+  Home::F9
+  End::F10
+  PgUp::F11
+  PgDn::F12
+}
 
 ;変換+F2 => Mute
 vk1C & F2::Volume_Mute
