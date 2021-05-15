@@ -186,6 +186,9 @@ if (%A_UserName% == sutea) {
   PgUp::F11
   PgDn::F12
 }
+;TODO: 下記で比較の実行はできたが、user名がsuteaのときにtrueにならないので調査
+;PgUp::
+;  if ("%A_UserName%" == sutea) {
 
 ;変換+F2 => Mute
 vk1C & F2::Volume_Mute
