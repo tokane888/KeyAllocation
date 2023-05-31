@@ -525,9 +525,9 @@ vk1D & d::
   Send {Delete}
   return
 
-;無変換+q => alt+F4
+;変換+i => alt+F4
 ;alt+F2  => alt+F4
-vk1D & q::
+vk1C & i::
 !F2::
   Send !{F4}
   return
