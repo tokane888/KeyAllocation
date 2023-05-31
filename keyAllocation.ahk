@@ -332,11 +332,7 @@ vk1C & d::
   if WinActive("ahk_class CabinetWClass") {
     ; エクスプローラー
     ControlGet ctrlVisible, Visible,, DirectUIHWND3
-    if (ctrlVisible) {
-      ControlFocus, DirectUIHWND3
-    } else {
-      ControlFocus, DirectUIHWND2
-    }
+    ControlFocus, DirectUIHWND2
     return
   } else if WinActive("ahk_class #32770") {
     ; "フォルダを開く"などのウィンドウ
