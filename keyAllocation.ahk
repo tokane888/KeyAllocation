@@ -321,6 +321,11 @@ vk1C & c::
   }
   return
 
+;変換+t => Windows Terminal起動
+vk1C & t::
+  Run , C:\Users\%A_UserName%\AppData\Local\Microsoft\WindowsApps\wt.exe
+  return
+
 ;変換+i => ctrl+win+左 (左の仮想ディスプレイへ移動)
 vk1c & i::Send ^#{Left}
 ;変換+o => ctrl+win+右 (右の仮想ディスプレイへ移動)
