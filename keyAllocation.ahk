@@ -184,6 +184,9 @@ F1::
   Send {F1}
   return
 
+^#o:: ; Windows + ctrl + o (スクリーンキーボード)を無効化
+Return
+
 ;Excelでalt+p => ctrl+PageUp
 !p::
   if WinActive("ahk_class XLMAIN") {
