@@ -301,6 +301,7 @@ vk1C & d::
 
 ;Explorerでctrl+d => ファイル/フォルダ一覧へフォーカス
 ;visual studio codeのフォルダを開くダイアログでも動作
+;chrome上でのctrl+dによるブックマーク追加は誤操作が多いので無効化
 ^d::
   if WinActive("ahk_class CabinetWClass") {
     ; エクスプローラー
@@ -310,6 +311,9 @@ vk1C & d::
   } else if WinActive("ahk_class #32770") {
     ; "フォルダを開く"などのウィンドウ
     ControlFocus, DirectUIHWND2
+    return
+  } else if WinActive("ahk_class Chrome_WidgetWin_1") {
+    ; chrome上でのctrl+dによるブックマーク追加は誤操作が多いので無効化
     return
   }
   Send ^d
