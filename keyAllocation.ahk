@@ -312,7 +312,7 @@ vk1C & d::
     ; "フォルダを開く"などのウィンドウ
     ControlFocus, DirectUIHWND2
     return
-  } else if WinActive("ahk_class Chrome_WidgetWin_1") {
+  } else if WinActive("ahk_exe chrome.exe") {
     ; chrome上でのctrl+dによるブックマーク追加は誤操作が多いので無効化
     return
   }
