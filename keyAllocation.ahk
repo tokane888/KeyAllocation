@@ -356,6 +356,9 @@ vk1C & m::Send #{Down}
 ;変換+space => スクリプトリロード
 vk1C & vk20::Reload
 
+;拡大鏡（Windows＋プラス）の無効化
+#;::Return
+
 ;ctrl+vで張り付け(cygwin用)
 ;パスをコピペする時に \  =>  / に変換して貼り付け
 #If WinActive("ahk_class mintty")
