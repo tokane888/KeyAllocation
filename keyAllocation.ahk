@@ -1,4 +1,4 @@
-﻿﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+﻿﻿﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
@@ -10,6 +10,41 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 
 #IfWinNotActive, ahk_class Qt5QWindowIcon
+
+; 無変換+ctrl+a => home
+vk1D & a::
+  if GetKeyState("ctrl", "P") {
+    Send {Home}
+  }
+  return
+
+;無変換+ctrl+d => downloadフォルダ開く
+;無変換+d => delete
+vk1D & d::
+  if GetKeyState("ctrl", "P") {
+    if WinActive("ahk_class CabinetWClass") || WinActive("ahk_class #32770") {
+      Send ^l
+      path = C:\Users\%A_UserName%\Downloads
+      PasteString(path)
+      Send {Enter}
+    } else {
+      Run, C:\Users\%A_UserName%\Downloads
+    }
+  } else {
+    Send {Delete}
+  }
+  return
+
+; 無変換+ctrl+e => end
+; 無変換+e => 英語
+vk1D & e::
+  if GetKeyState("ctrl", "P") {
+    Send {End}
+  } else {
+    IME_SET(0)
+  }
+  return
+
 ;無変換+[hjkl] => 左下上右
 ;無変換+ctrl+[hjkl] => shift+左下上右
 
@@ -132,9 +167,6 @@ esc::
   Send {Esc}
   return
 
-;変換+w => alt+shift+space(Wox用)
-vk1C & w::Send !+{Space}
-
 ;アプリケーションキー+[ => page up
 ;アプリケーションキー+] => page down
 ;AppsKey+[ => PgUp
@@ -214,15 +246,6 @@ Return
   }
   return
 
-;powershell上でctrl+a => Home
-^a::
-  if WinActive("ahk_exe pwsh.exe") or (WinActive("ahk_exe WindowsTerminal.exe") and WinActive("PowerShell")) {
-    Send {Home}
-  } else {
-    Send ^a
-  }
-  return
-
 ;メモ帳で ctrl+w => alt+F4
 ;桜エディタで ctrl+w => ctrl+F4
 ^w::
@@ -285,20 +308,6 @@ vk5C::vkA4
   Send ^{vkBD}
   return
 
-;変換+ctrl+d => Downloadフォルダを開く
-vk1C & d::
-  if GetKeyState("ctrl", "P") {
-    if WinActive("ahk_class CabinetWClass") || WinActive("ahk_class #32770") {
-      Send ^l
-      path = C:\Users\%A_UserName%\Downloads
-      PasteString(path)
-      Send {Enter}
-    } else {
-      Run, C:\Users\%A_UserName%\Downloads
-    }
-  }
-  return
-
 ;Explorerでctrl+d => ファイル/フォルダ一覧へフォーカス
 ;visual studio codeのフォルダを開くダイアログでも動作
 ;chrome上でのctrl+dによるブックマーク追加は誤操作が多いので無効化
@@ -325,6 +334,13 @@ vk1C & c::
     Run , C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
   } else {
     Run , C:\Program Files\Google\Chrome\Application\chrome.exe
+  }
+  return
+
+;変換+ctrl+h => ctrl+左
+vk1c & h::
+  if GetKeyState("ctrl", "P") {
+    Send ^{Left}
   }
   return
 
@@ -395,6 +411,58 @@ vk1C & vk20::Reload
   Send !{Space}ep  ;貼り付け
   return
 #IfWinActive
+
+; spaceをshiftキーとしても使用可能に
+space:: Send {Space}
+!space:: Send !{Space}	; power toys runのショートカット(alt + space)が機能しない対策
+space & 1:: Send {`!}
+space & 2:: Send "
+space & 3:: Send {`#}
+space & 4:: Send $
+space & 5:: Send {`%}
+space & 6:: Send &
+space & 7:: Send '
+space & 8:: Send *
+space & 9:: Send (
+space & 0:: Send )
+space & -:: Send {`=}
+space & ^:: Send ~
+space & \:: Send |	; space + 上の\ => |
+space & q:: Send Q
+space & w:: Send W
+space & e:: Send E
+space & r:: Send R
+space & t:: Send T
+space & y:: Send Y
+space & u:: Send U
+space & i:: Send I
+space & o:: Send O
+space & p:: Send P
+space & @:: Send {``}
+space & [:: Send {`{}
+space & a:: Send A
+space & s:: Send S
+space & d:: Send D
+space & f:: Send F
+space & g:: Send G
+space & h:: Send H
+space & j:: Send J
+space & k:: Send K
+space & l:: Send L
+space & `;:: Send {`+}
+space & vkBA:: Send {`*}
+space & ]:: Send {`}}
+space & z:: Send Z
+space & x:: Send X
+space & c:: Send C 
+space & v:: Send V
+space & b:: Send B
+space & n:: Send N
+space & m:: Send M 
+space & ,:: Send <
+space & .:: Send >
+space & /:: Send ?
+space & vkE2:: Send _	; space + 下のバックスラッシュ => _
 
 ;-------------------------------------------------------------------;
 ; Returns the maximum or minimum value for any number of inputs
@@ -472,15 +540,13 @@ UpDownSnap(Direction)
 ^#Up::UpDownSnap(1)
 ^#Down::UpDownSnap(0)
 
-;;;;;;bootcamp対応;;;;;;
-
-;無変換+e => 英語
-vk1D & e::
-  IME_SET(0)
-  return
-
 ;変換+l => 日本語
+;変換+ctrl+l => ctrl+右
 vk1C & l::
+  if GetKeyState("ctrl", "P") {
+    Send ^{Right}
+    return
+  }
   ; chrome上でうまく動かない場合があるので応急措置
   IME_SET(0)
 
@@ -504,11 +570,6 @@ IME_SET(SetSts, WinTitle="A") {
         , Int, 0x006   ;wParam  : IMC_SETOPENSTATUS
         , Int, SetSts) ;lParam  : 0 or 1
 }
-
-;無変換+d => delete
-vk1D & d::
-  Send {Delete}
-  return
 
 ;無変換+q => alt+F4
 ;alt+F2  => alt+F4
