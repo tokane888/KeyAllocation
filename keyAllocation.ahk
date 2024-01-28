@@ -35,6 +35,11 @@ vk1D & d::
   }
   return
 
+;無変換+f => shift+f
+vk1D & f::
+  Send +f
+  return
+
 ; 無変換+ctrl+e => end
 ; 無変換+e => 英語
 vk1D & e::
@@ -411,58 +416,6 @@ vk1C & vk20::Reload
   Send !{Space}ep  ;貼り付け
   return
 #IfWinActive
-
-; spaceをshiftキーとしても使用可能に
-space:: Send {Space}
-!space:: Send !{Space}	; power toys runのショートカット(alt + space)が機能しない対策
-space & 1:: Send {`!}
-space & 2:: Send "
-space & 3:: Send {`#}
-space & 4:: Send $
-space & 5:: Send {`%}
-space & 6:: Send &
-space & 7:: Send '
-space & 8:: Send *
-space & 9:: Send (
-space & 0:: Send )
-space & -:: Send {`=}
-space & ^:: Send ~
-space & \:: Send |	; space + 上の\ => |
-space & q:: Send Q
-space & w:: Send W
-space & e:: Send E
-space & r:: Send R
-space & t:: Send T
-space & y:: Send Y
-space & u:: Send U
-space & i:: Send I
-space & o:: Send O
-space & p:: Send P
-space & @:: Send {``}
-space & [:: Send {`{}
-space & a:: Send A
-space & s:: Send S
-space & d:: Send D
-space & f:: Send F
-space & g:: Send G
-space & h:: Send H
-space & j:: Send J
-space & k:: Send K
-space & l:: Send L
-space & `;:: Send {`+}
-space & vkBA:: Send {`*}
-space & ]:: Send {`}}
-space & z:: Send Z
-space & x:: Send X
-space & c:: Send C 
-space & v:: Send V
-space & b:: Send B
-space & n:: Send N
-space & m:: Send M 
-space & ,:: Send <
-space & .:: Send >
-space & /:: Send ?
-space & vkE2:: Send _	; space + 下のバックスラッシュ => _
 
 ;-------------------------------------------------------------------;
 ; Returns the maximum or minimum value for any number of inputs
