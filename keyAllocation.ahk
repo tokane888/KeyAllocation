@@ -1,4 +1,4 @@
-﻿﻿﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
@@ -18,21 +18,9 @@ vk1D & a::
   }
   return
 
-;無変換+ctrl+d => downloadフォルダ開く
 ;無変換+d => delete
 vk1D & d::
-  if GetKeyState("ctrl", "P") {
-    if WinActive("ahk_class CabinetWClass") || WinActive("ahk_class #32770") {
-      Send ^l
-      path = C:\Users\%A_UserName%\Downloads
-      PasteString(path)
-      Send {Enter}
-    } else {
-      Run, C:\Users\%A_UserName%\Downloads
-    }
-  } else {
-    Send {Delete}
-  }
+  Send {Delete}
   return
 
 ;無変換+f => shift+f
@@ -63,6 +51,7 @@ vk1D & h::
     Send {Left}
   }
   return
+
 ;無変換+j => 下
 vk1D & j::
   if GetKeyState("ctrl", "P") {
@@ -78,6 +67,7 @@ vk1D & j::
     }
   }
   return
+
 ;無変換+k => 上
 vk1D & k::
   If GetKeyState("ctrl", "P") {
@@ -93,6 +83,7 @@ vk1D & k::
     }
   }
   return
+
 ;無変換+l => 右
 vk1D & l::
   If GetKeyState("ctrl", "P") {
@@ -159,6 +150,20 @@ vk1D & vkBB::
     Send !{pgdn}
   } else {
     Send {pgdn}
+  }
+  return
+
+;変換+ctrl+d => downloadフォルダ開く
+vk1C & d::
+  if GetKeyState("ctrl", "P") {
+    if WinActive("ahk_class CabinetWClass") || WinActive("ahk_class #32770") {
+      Send ^l
+      path = C:\Users\%A_UserName%\Downloads
+      PasteString(path)
+      Send {Enter}
+    } else {
+      Run, C:\Users\%A_UserName%\Downloads
+    }
   }
   return
 
@@ -343,9 +348,12 @@ vk1C & c::
   return
 
 ;変換+ctrl+h => ctrl+左
+;変換+無変換+h => ctrl+shift+左
 vk1c & h::
   if GetKeyState("ctrl", "P") {
     Send ^{Left}
+  } else if GetKeyState("vk1D", "P") {
+    SendInput, {ShiftDown}{CtrlDown}{Left}{CtrlUp}{ShiftUp}
   }
   return
 
@@ -370,7 +378,22 @@ vk1C & s::
 vk1D & s::Send +{F10}
 
 ;変換+j => win+上
-vk1C & j::Send #{Up}
+;変換+ctrl+j => ctrl+下
+vk1C & j::
+  If GetKeyState("ctrl", "P") {
+    Send ^{Down}
+  } else {
+    Send #{Up}
+  }
+  return
+
+;変換+ctrl+k => ctrl+上
+vk1C & k::
+  If GetKeyState("ctrl", "P") {
+    Send ^{Up}
+  }
+  return
+
 ;変換+m => win+下
 vk1C & m::Send #{Down}
 
@@ -499,11 +522,14 @@ vk1C & l::
   if GetKeyState("ctrl", "P") {
     Send ^{Right}
     return
-  }
-  ; chrome上でうまく動かない場合があるので応急措置
-  IME_SET(0)
+  } else if GetKeyState("vk1D", "P") {
+    SendInput, {ShiftDown}{CtrlDown}{Right}{CtrlUp}{ShiftUp}
+  } else {
+    ; chrome上でうまく動かない場合があるので応急措置
+    IME_SET(0)
 
-  IME_SET(1)
+    IME_SET(1)
+  }
   return
 
 ;IME_SET(0) -> 英数
