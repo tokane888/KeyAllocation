@@ -45,8 +45,6 @@ vk1D & e::
 vk1D & h::
   if GetKeyState("ctrl", "P") {
     Send +{Left}
-  } else if GetKeyState("shift", "P") {
-    Send ^{Left}
   } else {
     Send {Left}
   }
@@ -56,8 +54,6 @@ vk1D & h::
 vk1D & j::
   if GetKeyState("ctrl", "P") {
     Send +{Down}
-  } else if GetKeyState("shift", "P") {
-    Send ^{Down}
   } else {
     if WinActive("ahk_class Framework::CFrame") {
       ; One Noteで上下キーSendが効かないので代用
@@ -72,8 +68,6 @@ vk1D & j::
 vk1D & k::
   If GetKeyState("ctrl", "P") {
     Send +{Up}
-  } else if GetKeyState("shift", "P") {
-    Send ^{Up}
   } else {
     if WinActive("ahk_class Framework::CFrame") {
       ; One Noteで上下キーSendが効かないので代用
@@ -88,8 +82,6 @@ vk1D & k::
 vk1D & l::
   If GetKeyState("ctrl", "P") {
     Send +{Right}
-  } else if GetKeyState("shift", "P") {
-    Send ^{Right}
   } else {
     Send {Right}
   }
@@ -377,20 +369,26 @@ vk1C & s::
 ;無変換+s => shift+F10(右クリック)
 vk1D & s::Send +{F10}
 
-;変換+j => win+上
 ;変換+ctrl+j => ctrl+下
+;変換+無変換+j => ctrl+shift+下
+;変換+j => win+下
 vk1C & j::
   If GetKeyState("ctrl", "P") {
     Send ^{Down}
+  } else if GetKeyState("vk1D", "P") {
+    SendInput, {ShiftDown}{CtrlDown}{Down}{CtrlUp}{ShiftUp}
   } else {
     Send #{Up}
   }
   return
 
 ;変換+ctrl+k => ctrl+上
+;変換+無変換+k => ctrl+shift+上
 vk1C & k::
   If GetKeyState("ctrl", "P") {
     Send ^{Up}
+  } else if GetKeyState("vk1D", "P") {
+    SendInput, {ShiftDown}{CtrlDown}{Up}{CtrlUp}{ShiftUp}
   }
   return
 
