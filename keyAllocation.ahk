@@ -359,13 +359,6 @@ vk1c & i::Send ^#{Left}
 ;変換+o => ctrl+win+右 (右の仮想ディスプレイへ移動)
 vk1c & o::Send ^#{Right}
 
-;変換+ctrl+s => systemのプロパティ
-vk1C & s::
-  if GetKeyState("ctrl", "P") {
-    Send #{Pause}
-  }
-  return
-
 ;無変換+s => shift+F10(右クリック)
 vk1D & s::Send +{F10}
 
